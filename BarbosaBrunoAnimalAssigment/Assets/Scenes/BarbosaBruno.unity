@@ -540,6 +540,7 @@ GameObject:
   - component: {fileID: 1538350629}
   - component: {fileID: 1538350628}
   - component: {fileID: 1538350627}
+  - component: {fileID: 1538350630}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -561,16 +562,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
   _serializedBlackboard: '{"_variables":{"Finished":{"_name":"Finished","_id":"a803e0e4-dd4f-445b-87d4-3b3a19462b88","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"CurrentState":{"_name":"CurrentState","_id":"7ddf486e-1e3b-4c99-9812-16e1c87219c1","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
-  _objectReferences: []
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Sleep":{"_name":"Sleep","_id":"7ddf486e-1e3b-4c99-9812-16e1c87219c1","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Hunger":{"_name":"Hunger","_id":"14c64520-a7f3-4f7a-b0b1-f3448798a331","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"myFloat.":{"_name":"myFloat.","_id":"e242f92a-5318-458c-a101-fd23a74e5fe0","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"myAudioSource":{"_value":1,"_name":"myAudioSource","_id":"e7d8be6f-2dfa-4b23-92a7-182eab2b9558","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.AudioSource,
+    UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"Meow":{"_value":2,"_name":"Meow","_id":"cb2895e7-3bb0-421b-a071-e38fddf51d5b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.AudioClip,
+    UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 1538350630}
+  - {fileID: 8300000, guid: 3c5ba239c07fe26498a34d0158c657ec, type: 3}
   _serializedVariables:
   - _json: '{"_name":"Finished","_id":"a803e0e4-dd4f-445b-87d4-3b3a19462b88","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
-  - _json: '{"_name":"CurrentState","_id":"7ddf486e-1e3b-4c99-9812-16e1c87219c1","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+  - _json: '{"_name":"Sleep","_id":"7ddf486e-1e3b-4c99-9812-16e1c87219c1","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
+  - _json: '{"_name":"Hunger","_id":"14c64520-a7f3-4f7a-b0b1-f3448798a331","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_name":"myFloat.","_id":"e242f92a-5318-458c-a101-fd23a74e5fe0","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_value":1,"_name":"myAudioSource","_id":"e7d8be6f-2dfa-4b23-92a7-182eab2b9558","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.AudioSource,
+      UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1538350630}
+  - _json: '{"_value":1,"_name":"Meow","_id":"cb2895e7-3bb0-421b-a071-e38fddf51d5b","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.AudioClip,
+      UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 8300000, guid: 3c5ba239c07fe26498a34d0158c657ec, type: 3}
 --- !u!114 &1538350628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,13 +608,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Thinking","_position":{"x":734.0,"y":524.0},"$type":"NodeCanvas.StateMachines.ActionState"},{"_nestedBT":{},"_name":"Climb","_position":{"x":441.0,"y":518.0},"$type":"NodeCanvas.StateMachines.NestedBTState"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Meow","_position":{"x":545.0,"y":760.0},"$type":"NodeCanvas.StateMachines.ActionState"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Play","_position":{"x":741.0,"y":766.0},"$type":"NodeCanvas.StateMachines.ActionState"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Sleep","_position":{"x":981.3632,"y":530.6606},"$type":"NodeCanvas.StateMachines.ActionState"},{"_nestedBT":{},"_color":{"r":1.0,"g":0.8941177,"b":0.8823529,"a":1.0},"_name":"Eat","_position":{"x":965.3825,"y":704.6696},"$type":"NodeCanvas.StateMachines.NestedBTState"},{"_nestedBT":{},"_color":{"r":1.0,"g":0.8941177,"b":0.8823529,"a":1.0},"_name":"Rubbing","_position":{"x":1229.075,"y":530.3644},"$type":"NodeCanvas.StateMachines.NestedBTState"}],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"source":{"_name":"myAudioSource","_targetVariableID":"e7d8be6f-2dfa-4b23-92a7-182eab2b9558"},"Clip":{"_name":"Meow","_targetVariableID":"cb2895e7-3bb0-421b-a071-e38fddf51d5b"},"$type":"NodeCanvas.Tasks.Actions.MeowAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Meow","_position":{"x":470.0,"y":670.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Thinking","_position":{"x":734.0,"y":524.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"},{"_nestedBT":{},"_name":"Climb","_position":{"x":451.0,"y":461.0},"$type":"NodeCanvas.StateMachines.NestedBTState"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Play","_position":{"x":741.0,"y":766.0},"$type":"NodeCanvas.StateMachines.ActionState"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Sleep","_position":{"x":943.3632,"y":369.6606},"$type":"NodeCanvas.StateMachines.ActionState"},{"_nestedBT":{},"_name":"Eat","_position":{"x":965.3825,"y":704.6696},"$type":"NodeCanvas.StateMachines.NestedBTState"},{"_nestedBT":{},"_name":"Rubbing","_position":{"x":1025.075,"y":519.3644},"$type":"NodeCanvas.StateMachines.NestedBTState"}],"connections":[{"_sourceNode":{"$ref":"1"},"_targetNode":{"$ref":"0"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _boundGraphObjectReferences: []
   _boundGraphSource:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: -403, y: -325}
+    _translation: {x: -272, y: -284}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
@@ -616,6 +640,102 @@ Transform:
   - {fileID: 1803224943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!82 &1538350630
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538350626}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1588651734
 GameObject:
   m_ObjectHideFlags: 0
