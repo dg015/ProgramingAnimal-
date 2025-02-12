@@ -20,7 +20,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
 			generateNewEvent();
-			//EndAction(true);
+			EndAction(true);
 		}
 
 		//Called once per frame while the action is active.
