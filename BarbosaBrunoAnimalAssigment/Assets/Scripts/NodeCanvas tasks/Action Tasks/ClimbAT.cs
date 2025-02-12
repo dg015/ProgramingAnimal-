@@ -51,11 +51,11 @@ namespace NodeCanvas.Tasks.Actions {
 		private void checkIfClimbing()
 		{
 			RaycastHit hit;
-			if( Physics.Raycast(agent.transform.position,Vector3.down, out hit,raycastDistance,UFOlayerMask) )
+			if( Physics.Raycast(agent.transform.position,agent.transform.up * -1, out hit,raycastDistance,UFOlayerMask) )
 			{
 				Debug.Log("ufo time");
 			}
-			Debug.DrawRay(agent.transform.position, Vector3.down,Color.blue);
+			Debug.DrawRay(agent.transform.position, agent.transform.up * -1, Color.blue);
 			
 		}
 	}
