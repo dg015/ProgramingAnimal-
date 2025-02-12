@@ -9,10 +9,16 @@ namespace NodeCanvas.Tasks.Actions {
         public Transform targetTransform;
         public BBParameter<Vector3> targetPosition;
 		private NavMeshAgent navAgent;
+		public GameObject UFOObject;
+		public bool isClimbing;
 
 		//reycast
 		public float raycastDistance;
 		public LayerMask UFOlayerMask;
+		public bool hasSpawned;
+
+		//UFO
+		public AutoDestroyer autoDestroyer;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -35,7 +41,13 @@ namespace NodeCanvas.Tasks.Actions {
             Vector3 target = agent.transform.position + directionToTarget.normalized * directionToTarget.magnitude;
             targetPosition.value = target;
 			navAgent.SetDestination(target);
+			UFO();
 			checkIfClimbing();
+			if( Vector3.Distance(agent.transform.position, targetPosition.value)< 2)
+			{
+				Debug.Log("arrived");
+				EndAction(true);
+			}
         }
 
 		//Called when the task is disabled.
@@ -50,13 +62,44 @@ namespace NodeCanvas.Tasks.Actions {
 
 		private void checkIfClimbing()
 		{
-			RaycastHit hit;
+			
+            
+            RaycastHit hit;
 			if( Physics.Raycast(agent.transform.position,agent.transform.up * -1, out hit,raycastDistance,UFOlayerMask) )
 			{
-				Debug.Log("ufo time");
+                isClimbing=true;
+
+                Debug.Log("ufo time");
 			}
+
+			else
+			{
+				//autoDestroyer.autoDestroy();
+				isClimbing = false;
+				hasSpawned = false;
+			}
+			if(isClimbing == false)
+			{
+				autoDestroyer.autoDestroy();
+			}
+
 			Debug.DrawRay(agent.transform.position, agent.transform.up * -1, Color.blue);
+			Debug.Log(UFOObject);
+		}
+
+		private void UFO()
+		{
 			
+			if(isClimbing && !hasSpawned)
+			{
+				hasSpawned = true;
+				Vector3 SpawnLocation = new Vector3(agent.transform.position.x,
+					agent.transform.position.y, agent.transform.position.z);
+                
+                Object.Instantiate(UFOObject, agent.transform);
+                autoDestroyer = GameObject.Find("UFO(Clone)").GetComponent<AutoDestroyer>();
+            }
+
 		}
 	}
 }
