@@ -10,6 +10,10 @@ namespace NodeCanvas.Tasks.Actions {
         public BBParameter<Vector3> targetPosition;
 		private NavMeshAgent navAgent;
 
+		//reycast
+		public float raycastDistance;
+		public LayerMask UFOlayerMask;
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit() {
@@ -31,6 +35,7 @@ namespace NodeCanvas.Tasks.Actions {
             Vector3 target = agent.transform.position + directionToTarget.normalized * directionToTarget.magnitude;
             targetPosition.value = target;
 			navAgent.SetDestination(target);
+			checkIfClimbing();
         }
 
 		//Called when the task is disabled.
@@ -40,6 +45,17 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called when the task is paused.
 		protected override void OnPause() {
+			
+		}
+
+		private void checkIfClimbing()
+		{
+			RaycastHit hit;
+			if( Physics.Raycast(agent.transform.position,Vector3.down, out hit,raycastDistance,UFOlayerMask) )
+			{
+				Debug.Log("ufo time");
+			}
+			Debug.DrawRay(agent.transform.position, Vector3.down,Color.blue);
 			
 		}
 	}
