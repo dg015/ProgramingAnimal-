@@ -1,13 +1,14 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace NodeCanvas.Tasks.Actions {
 
 	public class ClimbAT : ActionTask {
         public Transform targetTransform;
-        public BBParameter<Transform> targetPosition;
-
+        public BBParameter<Vector3> targetPosition;
+		private NavMeshAgent navAgent;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -19,6 +20,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+			navAgent = agent.GetComponent<NavMeshAgent>();
 			//EndAction(true);
 		}
 
@@ -27,8 +29,8 @@ namespace NodeCanvas.Tasks.Actions {
             Vector3 directionToTarget = targetTransform.position - agent.transform.position;
 
             Vector3 target = agent.transform.position + directionToTarget.normalized * directionToTarget.magnitude;
-            targetPosition.value.position = target;
-
+            targetPosition.value = target;
+			navAgent.SetDestination(target);
         }
 
 		//Called when the task is disabled.
