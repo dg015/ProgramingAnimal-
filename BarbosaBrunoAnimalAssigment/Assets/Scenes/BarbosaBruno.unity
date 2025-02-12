@@ -561,10 +561,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parentBlackboard: {fileID: 0}
   _serializedBlackboard: '{"_variables":{"Finished":{"_name":"Finished","_id":"a803e0e4-dd4f-445b-87d4-3b3a19462b88","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"CurrentState":{"_name":"CurrentState","_id":"7ddf486e-1e3b-4c99-9812-16e1c87219c1","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
   _serializedVariables:
   - _json: '{"_name":"Finished","_id":"a803e0e4-dd4f-445b-87d4-3b3a19462b88","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
+    _references: []
+  - _json: '{"_name":"CurrentState","_id":"7ddf486e-1e3b-4c99-9812-16e1c87219c1","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}'
     _references: []
 --- !u!114 &1538350628
@@ -580,13 +584,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"timer":15.0,"$type":"NodeCanvas.Tasks.Actions.WantFoodAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":651.0,"y":501.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":888.0,"y":604.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"}],"connections":[{"_condition":{"modifier":20.0,"$type":"NodeCanvas.Tasks.Conditions.ColourChangeAT"},"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Thinking","_position":{"x":734.0,"y":524.0},"$type":"NodeCanvas.StateMachines.ActionState"},{"_nestedBT":{},"_name":"Climb","_position":{"x":441.0,"y":518.0},"$type":"NodeCanvas.StateMachines.NestedBTState"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Meow","_position":{"x":545.0,"y":760.0},"$type":"NodeCanvas.StateMachines.ActionState"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Play","_position":{"x":741.0,"y":766.0},"$type":"NodeCanvas.StateMachines.ActionState"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Sleep","_position":{"x":981.3632,"y":530.6606},"$type":"NodeCanvas.StateMachines.ActionState"},{"_nestedBT":{},"_color":{"r":1.0,"g":0.8941177,"b":0.8823529,"a":1.0},"_name":"Eat","_position":{"x":965.3825,"y":704.6696},"$type":"NodeCanvas.StateMachines.NestedBTState"},{"_nestedBT":{},"_color":{"r":1.0,"g":0.8941177,"b":0.8823529,"a":1.0},"_name":"Rubbing","_position":{"x":1229.075,"y":530.3644},"$type":"NodeCanvas.StateMachines.NestedBTState"}],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _boundGraphObjectReferences: []
   _boundGraphSource:
     _version: 3.31
     _category: 
     _comments: 
-    _translation: {x: -533, y: -278}
+    _translation: {x: -403, y: -325}
     _zoomFactor: 1
   _firstActivation: 0
   _enableAction: 0
