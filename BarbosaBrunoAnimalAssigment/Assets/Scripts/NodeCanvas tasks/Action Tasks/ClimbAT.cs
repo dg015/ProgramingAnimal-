@@ -78,7 +78,7 @@ namespace NodeCanvas.Tasks.Actions {
 				isClimbing = false;
 				hasSpawned = false;
 			}
-			if(isClimbing == false)
+			if(isClimbing == false && autoDestroyer!= null)
 			{
 				autoDestroyer.autoDestroy();
 			}
