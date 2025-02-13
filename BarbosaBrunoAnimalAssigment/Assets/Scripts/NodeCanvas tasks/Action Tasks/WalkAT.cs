@@ -21,7 +21,9 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			if ( walking() == true )
+			targetTransform = GameObject.Find("Bed").GetComponent<Transform>();
+            targetPosition = GameObject.Find("Bed").GetComponent<Transform>().position;
+            if ( walking() == true )
 			{
                 EndAction(true);
             }
