@@ -10,6 +10,8 @@ namespace NodeCanvas.Tasks.Actions {
         public BBParameter <Transform> targetTransform;
         public BBParameter<Vector3> targetPosition;
         public BBParameter <NavMeshAgent> navAgent;
+		public BBParameter<float> hunger;
+		public BBParameter<float> sleep;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -21,8 +23,16 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			targetTransform = GameObject.Find("Bed").GetComponent<Transform>();
-            targetPosition = GameObject.Find("Bed").GetComponent<Transform>().position;
+			if(sleep.value <1)
+			{
+                targetTransform = GameObject.Find("Bed").GetComponent<Transform>();
+                targetPosition = GameObject.Find("Bed").GetComponent<Transform>().position;
+            }
+			else  if (hunger.value < 1)
+            {
+                targetTransform = GameObject.Find("Eat platform").GetComponent<Transform>();
+                targetPosition = GameObject.Find("Eat platform").GetComponent<Transform>().position;
+            }
             if ( walking() == true )
 			{
                 EndAction(true);
