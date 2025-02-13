@@ -51,7 +51,7 @@ namespace NodeCanvas.Tasks.Actions {
             Vector3 target = agent.transform.position + directionToTarget.normalized * directionToTarget.magnitude;
             targetPosition.value = target;
             navAgent.value.SetDestination(target);
-			if(Vector3.Distance(agent.transform.position, targetPosition.value)< 1)
+			if(Vector3.Distance(agent.transform.position, targetPosition.value)< 2)
 			{
 				return true;
 			}
