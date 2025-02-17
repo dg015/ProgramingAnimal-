@@ -7,7 +7,7 @@ namespace NodeCanvas.Tasks.Conditions {
 
 	public class ParticleCT : ConditionTask {
 		public GameObject playIcon;
-		public Transform spawnPoint;
+		public BBParameter<Transform> spawnPoint;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -17,7 +17,7 @@ namespace NodeCanvas.Tasks.Conditions {
 
 		//Called whenever the condition gets enabled.
 		protected override void OnEnable() {
-			GameObject Particle = Object.Instantiate(playIcon, spawnPoint);
+			GameObject Particle = Object.Instantiate(playIcon, spawnPoint.value);
 
         }
 
