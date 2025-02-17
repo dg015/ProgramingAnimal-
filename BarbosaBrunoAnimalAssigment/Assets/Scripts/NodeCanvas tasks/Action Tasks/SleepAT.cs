@@ -12,6 +12,8 @@ namespace NodeCanvas.Tasks.Actions {
         public GameObject playIcon;
         public BBParameter<Transform> spawnPoint;
 
+		public GameObject effect;
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit() {
@@ -22,7 +24,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-            GameObject Particle = Object.Instantiate(playIcon, spawnPoint.value);
+             effect = Object.Instantiate(playIcon, spawnPoint.value);
             //
         }
 
@@ -45,14 +47,16 @@ namespace NodeCanvas.Tasks.Actions {
 		{
 			if (sleepValue.value > SleepMax.value)
 			{
-				
-				IsSleeping = false;
+                UnityEngine.Object.Destroy(effect);
+                IsSleeping.value = false;
 				Debug.Log("finishd sleeping");
 				EndAction(true);
 			}
-			else if(sleepValue.value < SleepMax.value) { }
+			else if(sleepValue.value < SleepMax.value) 
 			{
-                IsSleeping = true;
+				Debug.Log("Im here");
+               // effect = GameObject.Find("SleepEffect(Clone)").GetComponent<GameObject>();
+                IsSleeping.value = true;
                 sleepValue.value += Time.deltaTime * 5;
 			}
 

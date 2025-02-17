@@ -40,7 +40,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		private void generateNewEvent()
 		{
-			StateID.value = Random.Range(2,6);
+			StateID.value = Random.Range(2,3);
 			Debug.Log(StateID.value.ToString());
 
 		}

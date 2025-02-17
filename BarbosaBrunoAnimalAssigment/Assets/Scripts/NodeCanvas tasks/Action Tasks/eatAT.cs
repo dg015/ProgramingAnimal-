@@ -42,14 +42,14 @@ namespace NodeCanvas.Tasks.Actions {
         {
             if (hungerValue.value > hungerMax.value)
             {
-                IsEating = false;
+                IsEating.value = false;
                 Debug.Log("finishd sleeping");
                 EndAction(true);
             }
             else if (hungerValue.value < hungerMax.value) { }
             {
-                IsEating = true;
-                hungerValue.value += Time.deltaTime * 15;
+                IsEating.value = true;
+                hungerValue.value += Time.deltaTime * 50;
             }
 
 
