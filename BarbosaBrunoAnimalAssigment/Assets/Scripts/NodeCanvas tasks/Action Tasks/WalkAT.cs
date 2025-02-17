@@ -30,14 +30,14 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnExecute() {
 			if(sleep.value <1)
 			{
-                targetTransform = GameObject.Find("Bed").GetComponent<Transform>();
-                targetPosition = GameObject.Find("Bed").GetComponent<Transform>().position;
+                targetTransform.value = GameObject.Find("Bed").GetComponent<Transform>();
+                targetPosition.value = GameObject.Find("Bed").GetComponent<Transform>().position;
             }
 			else  if (hunger.value < 1)
             {
 				source.value.PlayOneShot(clip.value);
-                targetTransform = GameObject.Find("Eat platform").GetComponent<Transform>();
-                targetPosition = GameObject.Find("Eat platform").GetComponent<Transform>().position;
+                targetTransform.value = GameObject.Find("Eat platform").GetComponent<Transform>();
+                targetPosition.value = GameObject.Find("Eat platform").GetComponent<Transform>().position;
             }
             if ( walking() == true )
 			{
