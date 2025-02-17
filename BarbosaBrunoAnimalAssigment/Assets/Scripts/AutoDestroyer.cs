@@ -24,4 +24,6 @@ public class AutoDestroyer : MonoBehaviour
         Destroy(gameObject);
 
     }
+
+
 }

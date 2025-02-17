@@ -6,12 +6,19 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Actions {
 
 	public class ThinkingAT : ActionTask {
-
+		//state
 		public BBParameter<int> StateID;
+		
+		//thinking
+		public float waitTimeLimit;
+		public float WaitTime;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+		//particle effect
+        public GameObject Effect;
+        public BBParameter<Transform> spawnPoint;
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -19,13 +26,15 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			generateNewEvent();
-			EndAction(true);
-		}
+            GameObject Particle = Object.Instantiate(Effect, spawnPoint.value);
+            WaitTime = 0;
+            //EndAction(true);
+        }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-
+            generateNewEvent();
+            
         }
 
         //Called when the task is disabled.
@@ -40,8 +49,14 @@ namespace NodeCanvas.Tasks.Actions {
 
 		private void generateNewEvent()
 		{
-			StateID.value = Random.Range(2,3);
-			Debug.Log(StateID.value.ToString());
+			
+			WaitTime += Time.deltaTime;
+			if(WaitTime> waitTimeLimit)
+			{
+                StateID.value = Random.Range(2, 3);
+                EndAction(true);
+                Debug.Log(StateID.value.ToString());
+            }
 
 		}
 	}

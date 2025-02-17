@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroyParticleOnBool : MonoBehaviour
 {
     public bool destroyCommand;
+    public float countdownTimer;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,14 +15,7 @@ public class DestroyParticleOnBool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DestroyOnComand();
+        Destroy(gameObject,5);
     }
 
-    public void DestroyOnComand()
-    {
-        if(destroyCommand )
-        {
-            Destroy(gameObject);
-        }
-    }
 }
