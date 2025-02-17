@@ -13,6 +13,11 @@ namespace NodeCanvas.Tasks.Actions {
 		public BBParameter<float> hunger;
 		public BBParameter<float> sleep;
 
+		//audio
+		public BBParameter<AudioSource> source;
+        public BBParameter<AudioClip> clip;
+
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit() {
@@ -30,6 +35,7 @@ namespace NodeCanvas.Tasks.Actions {
             }
 			else  if (hunger.value < 1)
             {
+				source.value.PlayOneShot(clip.value);
                 targetTransform = GameObject.Find("Eat platform").GetComponent<Transform>();
                 targetPosition = GameObject.Find("Eat platform").GetComponent<Transform>().position;
             }
