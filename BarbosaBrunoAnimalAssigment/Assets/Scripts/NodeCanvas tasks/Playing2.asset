@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
+  m_Name: Playing2
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"targetTransform":{"_name":"Target","_targetVariableID":"c20e4eee-1804-40e8-a369-d0ab5756e815"},"targetPosition":{"_name":"TargetPosition","_targetVariableID":"8c350cd1-e0f0-4506-bad6-2a65ff887321"},"navAgent":{"_name":"NavAgent","_targetVariableID":"937501eb-635e-4abb-bf2f-16edd7fa4682"},"hunger":{"_name":"Hunger","_targetVariableID":"14c64520-a7f3-4f7a-b0b1-f3448798a331"},"sleep":{"_name":"Sleep","_targetVariableID":"f2b21be9-d169-4298-ab17-3971b5aa9f1b"},"source":{"_name":"AudioSource","_targetVariableID":"e7d8be6f-2dfa-4b23-92a7-182eab2b9558"},"clip":{"_name":"StomachAudio","_targetVariableID":"bc89157a-87b8-41b7-95df-23960c91d2c3"},"state":{"_name":"CurrentState","_targetVariableID":"7ddf486e-1e3b-4c99-9812-16e1c87219c1"},"$type":"NodeCanvas.Tasks.Actions.WalkAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Walk","_position":{"x":185.0,"y":303.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"playtTimer":{"_name":"PlayTime","_targetVariableID":"b0572a31-c0d2-4a09-8337-984323749574"},"playtTimerMax":{"_name":"PlayTimeMax","_targetVariableID":"5574824c-cac3-4fb3-ae63-3526752039c1"},"targetPosition":{"_name":"TargetPosition","_targetVariableID":"8c350cd1-e0f0-4506-bad6-2a65ff887321"},"navAgent":{"_name":"NavAgent","_targetVariableID":"937501eb-635e-4abb-bf2f-16edd7fa4682"},"spinRadius":{"_name":"SpinRadius","_targetVariableID":"e1828fec-d4f2-4d9f-8db4-87a21e782f88"},"spawnPoint":{"_name":"ParticleSpawnLocaiton","_targetVariableID":"af4f0fda-68c1-4623-847b-9f1de35af9e2"},"playIcon":1,"$type":"NodeCanvas.Tasks.Actions.PlayAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Play","_position":{"x":322.0,"y":376.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 1145400538285864959, guid: 876b69b3d3ff38d4c8cde4e744984916, type: 3}
+  _graphSource:
+    _version: 3.31
+    _category: 
+    _comments: 
+    _translation: {x: 83, y: 29}
+    _zoomFactor: 1
+  _haltSerialization: 0
+  _externalSerializationFile: {fileID: 0}

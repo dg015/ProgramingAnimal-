@@ -9,7 +9,7 @@ namespace NodeCanvas.Tasks.Actions {
 		public BBParameter<bool> IsSleeping;
 		public BBParameter<float> SleepMax;
 
-        public GameObject playIcon;
+        public GameObject SleepIcon;
         public BBParameter<Transform> spawnPoint;
 
 		public GameObject effect;
@@ -24,7 +24,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-             effect = Object.Instantiate(playIcon, spawnPoint.value);
+             effect = Object.Instantiate(SleepIcon, spawnPoint.value);
             //
         }
 

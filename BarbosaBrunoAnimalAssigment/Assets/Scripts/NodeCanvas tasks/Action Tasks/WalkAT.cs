@@ -35,7 +35,6 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-            alreadyPlayedAudio = false;
             if (sleep.value <1)
 			{
                 targetTransform.value = GameObject.Find("Bed").GetComponent<Transform>();
@@ -43,7 +42,7 @@ namespace NodeCanvas.Tasks.Actions {
             }
 			else  if (hunger.value < 1)
             {
-				if(!alreadyPlayedAudio)
+				if(!alreadyPlayedAudio && !source.value.isPlaying)
 				{
 					alreadyPlayedAudio = true;
                     source.value.PlayOneShot(clip.value);
@@ -73,8 +72,8 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
-			
-		}
+            alreadyPlayedAudio = false;
+        }
 
 		//Called when the task is paused.
 		protected override void OnPause() {

@@ -15,6 +15,10 @@ namespace NodeCanvas.Tasks.Actions {
 		public BBParameter<float> spinRadius;
 		float angle;
 
+        public GameObject effect;
+        public BBParameter<Transform> spawnPoint;
+        public GameObject playIcon;
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit() {
@@ -26,9 +30,9 @@ namespace NodeCanvas.Tasks.Actions {
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
 			playtTimer.value = 0;
+            effect = Object.Instantiate(playIcon, spawnPoint.value);
 
-
-		}
+        }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
@@ -36,6 +40,7 @@ namespace NodeCanvas.Tasks.Actions {
             playtTimer.value += Time.deltaTime;
             if (playtTimer.value > playtTimerMax.value)
             {
+                UnityEngine.Object.Destroy(effect);
                 EndAction(true);
             }
         }
