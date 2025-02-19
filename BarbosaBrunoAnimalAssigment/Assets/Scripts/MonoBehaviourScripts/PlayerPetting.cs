@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 
 public class PlayerPetting : MonoBehaviour
 {
-    [SerializeField] public PetAT petScript;
 
     [SerializeField] Transform orientation;
     [SerializeField] private float pettingDistance;
@@ -15,12 +14,13 @@ public class PlayerPetting : MonoBehaviour
 
     [SerializeField] private Camera virtualCamera;
 
+    [SerializeField] public bool IsPetting;
     // Update is called once per frame
 
     private void Start()
     {
-        petScript = GameObject.Find("Cat").GetComponent<PetAT>();
-        Debug.Log(petScript.ToString());
+        
+        
     }
     void Update()
     {
@@ -38,13 +38,22 @@ public class PlayerPetting : MonoBehaviour
         if ( Physics.Raycast(transform.position + new Vector3(0,1.25f), direction , out hit, pettingDistance,layer))
         {
             
-            if(Input.GetKey(KeyCode.E) && petScript.petValue < petScript.petValueMax)
+            if(Input.GetKey(KeyCode.E))
             {
-                petScript.petValue += Time.deltaTime;
+                IsPetting = true;
+            }
+            else
+            {
+                IsPetting = false;
             }
 
         }
+        else
+        {
+            IsPetting=false;
+        }
 
     }
+
 
 }

@@ -16,7 +16,7 @@ namespace NodeCanvas.Tasks.Actions {
 		public BBParameter<float> sleep;
 		// state walking
 
-
+		public bool alreadyPlayedAudio;
 		//audio
 		public BBParameter<AudioSource> source;
         public BBParameter<AudioClip> clip;
@@ -35,14 +35,20 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			if(sleep.value <1)
+            alreadyPlayedAudio = false;
+            if (sleep.value <1)
 			{
                 targetTransform.value = GameObject.Find("Bed").GetComponent<Transform>();
                 targetPosition.value = GameObject.Find("Bed").GetComponent<Transform>().position;
             }
 			else  if (hunger.value < 1)
             {
-				source.value.PlayOneShot(clip.value);
+				if(!alreadyPlayedAudio)
+				{
+					alreadyPlayedAudio = true;
+                    source.value.PlayOneShot(clip.value);
+                }
+				
                 targetTransform.value = GameObject.Find("Eat platform").GetComponent<Transform>();
                 targetPosition.value = GameObject.Find("Eat platform").GetComponent<Transform>().position;
             }

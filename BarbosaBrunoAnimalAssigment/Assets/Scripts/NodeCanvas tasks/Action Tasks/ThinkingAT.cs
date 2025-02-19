@@ -16,6 +16,8 @@ namespace NodeCanvas.Tasks.Actions {
 		//particle effect
         public GameObject Effect;
         public BBParameter<Transform> spawnPoint;
+		
+
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
         protected override string OnInit() {
@@ -49,11 +51,10 @@ namespace NodeCanvas.Tasks.Actions {
 
 		private void generateNewEvent()
 		{
-			
 			WaitTime += Time.deltaTime;
 			if(WaitTime> waitTimeLimit)
 			{
-                StateID.value = Random.Range(2, 5);
+                StateID.value = Random.Range(2, 6);
                 EndAction(true);
                 Debug.Log(StateID.value.ToString());
             }

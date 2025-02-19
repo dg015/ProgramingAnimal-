@@ -8,6 +8,8 @@ namespace NodeCanvas.Tasks.Actions {
 		public BBParameter<float> hunger;
         public BBParameter<float> MinimalHunger;
         public BBParameter<bool> isEating;
+        public BBParameter<bool> isSleeping;
+
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -25,13 +27,9 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-            if (hunger.value > MinimalHunger.value && !isEating.value)
+            if (hunger.value >= MinimalHunger.value && !isEating.value &&!isSleeping.value)
             {
                 hunger.value -= Time.deltaTime;
-            }
-            else if (isEating.value)
-            {
-                Debug.Log("eating");
             }
         }
 

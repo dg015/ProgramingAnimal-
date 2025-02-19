@@ -33,16 +33,6 @@ namespace NodeCanvas.Tasks.Actions {
             //IsSleeping = true;
             sleeping();
         }
-
-		//Called when the task is disabled.
-		protected override void OnStop() {
-			
-		}
-
-		//Called when the task is paused.
-		protected override void OnPause() {
-			
-		}
 		private void sleeping()
 		{
 			if (sleepValue.value > SleepMax.value)
