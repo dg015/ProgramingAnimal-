@@ -30,8 +30,9 @@ namespace NodeCanvas.Tasks.Conditions {
 		protected override bool OnCheck() {
 			if(nextState == StateID.value)
 			{
-				return true;
-
+                StateID.value = 0;
+                return true;
+				
             }
 			else
 			{

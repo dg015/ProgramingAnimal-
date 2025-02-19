@@ -7,15 +7,22 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class WalkAT : ActionTask {
 
+		// target moving
         public BBParameter <Transform> targetTransform;
         public BBParameter<Vector3> targetPosition;
         public BBParameter <NavMeshAgent> navAgent;
+		// eat and hunger
 		public BBParameter<float> hunger;
 		public BBParameter<float> sleep;
+		// state walking
+
 
 		//audio
 		public BBParameter<AudioSource> source;
         public BBParameter<AudioClip> clip;
+
+		//playing
+		public BBParameter<float> state;
 
 
         //Use for initialization. This is called only once in the lifetime of the task.
@@ -39,12 +46,17 @@ namespace NodeCanvas.Tasks.Actions {
                 targetTransform.value = GameObject.Find("Eat platform").GetComponent<Transform>();
                 targetPosition.value = GameObject.Find("Eat platform").GetComponent<Transform>().position;
             }
-            if ( walking() == true )
+			else if (hunger.value > 1 && sleep.value > 1)// doest check for 4 because it resets back to state 0 when change states to not create infinite loops
 			{
+				Debug.Log("play time");
+				targetTransform.value = GameObject.Find("Play platform").GetComponent<Transform>();
+                targetPosition.value = GameObject.Find("Play platform").GetComponent<Transform>().position;
+            }
+            if (walking() == true)
+            {
                 EndAction(true);
             }
-			
-		}
+        }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {

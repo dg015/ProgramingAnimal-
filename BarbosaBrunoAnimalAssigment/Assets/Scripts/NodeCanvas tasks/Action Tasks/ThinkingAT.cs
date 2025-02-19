@@ -53,7 +53,7 @@ namespace NodeCanvas.Tasks.Actions {
 			WaitTime += Time.deltaTime;
 			if(WaitTime> waitTimeLimit)
 			{
-                StateID.value = Random.Range(2, 3);
+                StateID.value = Random.Range(2, 5);
                 EndAction(true);
                 Debug.Log(StateID.value.ToString());
             }

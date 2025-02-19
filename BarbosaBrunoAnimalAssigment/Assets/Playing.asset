@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f945e777233a59f4aba40aeca29093a6, type: 3}
+  m_Name: Playing
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"targetTransform":{"_name":"Target","_targetVariableID":"c20e4eee-1804-40e8-a369-d0ab5756e815"},"targetPosition":{"_name":"TargetLocation","_targetVariableID":"8c350cd1-e0f0-4506-bad6-2a65ff887321"},"navAgent":{"_name":"NavAgent","_targetVariableID":"937501eb-635e-4abb-bf2f-16edd7fa4682"},"hunger":{"_name":"Hunger","_targetVariableID":"14c64520-a7f3-4f7a-b0b1-f3448798a331"},"sleep":{"_name":"Sleep","_targetVariableID":"f2b21be9-d169-4298-ab17-3971b5aa9f1b"},"source":{"_name":"AudioSource","_targetVariableID":"e7d8be6f-2dfa-4b23-92a7-182eab2b9558"},"clip":{"_name":"MeowAudio","_targetVariableID":"cb2895e7-3bb0-421b-a071-e38fddf51d5b"},"state":{"_name":"CurrentState","_targetVariableID":"7ddf486e-1e3b-4c99-9812-16e1c87219c1"},"$type":"NodeCanvas.Tasks.Actions.WalkAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Walk","_position":{"x":104.0,"y":254.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_name":"Play","_position":{"x":254.0,"y":411.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _objectReferences: []
+  _graphSource:
+    _version: 3.31
+    _category: 
+    _comments: 
+    _translation: {x: 165, y: 101}
+    _zoomFactor: 1
+  _haltSerialization: 0
+  _externalSerializationFile: {fileID: 0}
