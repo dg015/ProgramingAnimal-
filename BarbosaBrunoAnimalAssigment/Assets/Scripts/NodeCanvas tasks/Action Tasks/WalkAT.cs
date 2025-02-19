@@ -52,16 +52,18 @@ namespace NodeCanvas.Tasks.Actions {
 				targetTransform.value = GameObject.Find("Play platform").GetComponent<Transform>();
                 targetPosition.value = GameObject.Find("Play platform").GetComponent<Transform>().position;
             }
-            if (walking() == true)
-            {
-                EndAction(true);
-            }
+
         }
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			
-		}
+			walking();
+            if (walking() == true)
+            {
+                Debug.Log("arrived");
+                EndAction(true);
+            }
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
@@ -85,9 +87,15 @@ namespace NodeCanvas.Tasks.Actions {
 			}
 			else
 			{
+				Debug.Log("not there yet");
 				return false;
 			}
         }
 
+
+		private void check()
+		{
+
+		}
 	}
 }

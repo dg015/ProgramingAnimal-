@@ -22,12 +22,12 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			EndAction(true);
+			//EndAction(true);
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-			
+			spin();
 		}
 
 		//Called when the task is disabled.
@@ -41,7 +41,9 @@ namespace NodeCanvas.Tasks.Actions {
 		}
 		public void spin()
 		{
-
+			Vector2 direction = new Vector2(agent.transform.position.x - targetPosition.value.x, agent.transform.position.y - targetPosition.value.y);
+			float angle = Mathf.Atan2(direction.y,direction.x) * Mathf.Rad2Deg;
+			angle += 1 ; 
 		}
 	}
 }
