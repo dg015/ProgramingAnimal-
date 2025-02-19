@@ -2,15 +2,18 @@ using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 namespace NodeCanvas.Tasks.Actions {
 
 	public class PlayAT : ActionTask {
 
 		public BBParameter<float> playtTimer;
+        public BBParameter<float> playtTimerMax;
         public BBParameter<Vector3> targetPosition;
         public BBParameter<NavMeshAgent> navAgent;
-
+		public BBParameter<float> spinRadius;
+		float angle;
 
         //Use for initialization. This is called only once in the lifetime of the task.
         //Return null if init was successfull. Return an error string otherwise
@@ -22,13 +25,20 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			//EndAction(true);
+			playtTimer.value = 0;
+
+
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
 			spin();
-		}
+            playtTimer.value += Time.deltaTime;
+            if (playtTimer.value > playtTimerMax.value)
+            {
+                EndAction(true);
+            }
+        }
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
@@ -41,9 +51,15 @@ namespace NodeCanvas.Tasks.Actions {
 		}
 		public void spin()
 		{
-			Vector2 direction = new Vector2(agent.transform.position.x - targetPosition.value.x, agent.transform.position.y - targetPosition.value.y);
-			float angle = Mathf.Atan2(direction.y,direction.x) * Mathf.Rad2Deg;
-			angle += 1 ; 
-		}
+			
+			Vector3 direction = targetPosition.value - agent.transform.position;
+			direction.y = 0f;
+			direction.Normalize();
+			angle += 2 * Time.deltaTime; 
+			Vector3 moveDireciton = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * spinRadius.value;
+
+
+			navAgent.value.SetDestination(agent.transform.position + moveDireciton);
+        }
 	}
 }
