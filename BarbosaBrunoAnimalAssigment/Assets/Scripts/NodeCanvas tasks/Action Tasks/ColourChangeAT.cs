@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace NodeCanvas.Tasks.Conditions
 {
-	
-
 	public class ColourChangeAT : ConditionTask {
 
+		//UNUSED SCRIPT
 
         public float ColourChng;
 		public float modifier;
@@ -20,29 +19,27 @@ namespace NodeCanvas.Tasks.Conditions
 
 		//Called whenever the condition gets enabled.
 		protected override void OnEnable() {
+			//set the colour to the original colour
             ColourChng = 147;
         }
 
-		//Called whenever the condition gets disabled.
-		protected override void OnDisable() {
-			
-		}
-
-		//Called once per frame while the condition is active.
-		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
-
-			// original colour 
-			
-			
+			//change the colour overtime by changing the variable over time
 				ColourChng -= Time.deltaTime * modifier ;
+			//set the new colour and devide them all by 255 since while colours in the edito go to 255 in script they stop at 1
                 agent.GetComponentInChildren<Renderer>().material.color = new Color(255 / 255, ColourChng / 255, 28 / 255);
             
             if (ColourChng < 27)
             {
+				//if its higher then return true
+
                 return true;
             }
-			else { return false; }
+			else 
+			{ 
+
+				return false;
+			}
 
 			
 			

@@ -15,12 +15,14 @@ public class CameraWork : MonoBehaviour
     public Vector3 CameraOrientation;
     void Start()
     {
+        //lock the cursor to screen
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         getMouseRotation();
     }
 

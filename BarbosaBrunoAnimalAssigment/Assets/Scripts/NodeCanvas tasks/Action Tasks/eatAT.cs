@@ -5,7 +5,8 @@ using UnityEngine;
 namespace NodeCanvas.Tasks.Actions {
 
 	public class eatAT : ActionTask {
-
+        
+        //varaibles
         public BBParameter<float> hungerValue;
         public BBParameter<bool> IsEating;
         public BBParameter<float> hungerMax;
@@ -24,15 +25,18 @@ namespace NodeCanvas.Tasks.Actions {
 
         private void eating()
         {
+            //if the hunger variable (its actually how full the cat is) then they finished eating
             if (hungerValue.value > hungerMax.value)
             {
                 Debug.LogWarning("FINISHED EATING");
+                //set is eating to false and finish
                 IsEating.value = false;
                 
                 EndAction(true);
             }
             else if (hungerValue.value < hungerMax.value) 
             {
+                //if its lower the the max then the cat is eating and increase their hunger value
                 IsEating.value = true;
                 hungerValue.value += Time.deltaTime * 25;
             }
