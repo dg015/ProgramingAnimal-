@@ -9,27 +9,22 @@ namespace NodeCanvas.Tasks.Conditions {
 		public GameObject playIcon;
 		public BBParameter<Transform> spawnPoint;
 
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
+
+		//this is one of the experiments signifiers
 		protected override string OnInit(){
 			return null;
 		}
 
 		//Called whenever the condition gets enabled.
 		protected override void OnEnable() {
+			//jsut spawns the object at the cats head
 			GameObject Particle = Object.Instantiate(playIcon, spawnPoint.value);
 
         }
 
-		//Called whenever the condition gets disabled.
-		protected override void OnDisable() {
-			
-		}
-
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
-			//if()
 			return true;
 		}
 	}

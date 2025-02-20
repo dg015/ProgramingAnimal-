@@ -28,6 +28,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+			// spawn object which will delete itself late, so no need to call the destroy from unity engine library
             GameObject Particle = Object.Instantiate(Effect, spawnPoint.value);
             WaitTime = 0;
             //EndAction(true);
@@ -38,25 +39,15 @@ namespace NodeCanvas.Tasks.Actions {
             generateNewEvent();
             
         }
-
-        //Called when the task is disabled.
-        protected override void OnStop() {
-			
-		}
-
-		//Called when the task is paused.
-		protected override void OnPause() {
-			
-		}
-
 		private void generateNewEvent()
 		{
+			//make the cat wait to think about the next event
 			WaitTime += Time.deltaTime;
 			if(WaitTime> waitTimeLimit)
 			{
+				//after so generate a random event of what the cat will do
                 StateID.value = Random.Range(2, 6);
                 EndAction(true);
-                Debug.Log(StateID.value.ToString());
             }
 
 		}

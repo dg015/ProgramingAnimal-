@@ -8,13 +8,17 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class PlayAT : ActionTask {
 
+		//value variables
 		public BBParameter<float> playtTimer;
         public BBParameter<float> playtTimerMax;
+
+		//movement variables
         public BBParameter<Vector3> targetPosition;
         public BBParameter<NavMeshAgent> navAgent;
 		public BBParameter<float> spinRadius;
 		float angle;
 
+		//effects variables
         public GameObject effect;
         public BBParameter<Transform> spawnPoint;
         public GameObject playIcon;
@@ -29,6 +33,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
+			//reset variables and assign the newly instantiated object as the effect variable to later delete it
 			playtTimer.value = 0;
             effect = Object.Instantiate(playIcon, spawnPoint.value);
 
@@ -36,34 +41,30 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
+			//set the alien cat to spin
 			spin();
+			//increase the cat player time
             playtTimer.value += Time.deltaTime;
             if (playtTimer.value > playtTimerMax.value)
             {
+				//call unity engine library because nodecanvas is stuborn with destroying stuff 
+				//destroy the effect since the cat left the state so no need for the signifier
                 UnityEngine.Object.Destroy(effect);
                 EndAction(true);
             }
         }
-
-		//Called when the task is disabled.
-		protected override void OnStop() {
-			
-		}
-
-		//Called when the task is paused.
-		protected override void OnPause() {
-			
-		}
 		public void spin()
 		{
-			
+			//get the direction of next position
 			Vector3 direction = targetPosition.value - agent.transform.position;
+			//set Y 0 so theres no chance of the cat flying anywhere, even though its impossible
 			direction.y = 0f;
 			direction.Normalize();
-			angle += 2 * Time.deltaTime; 
+			angle += 2 * Time.deltaTime; // increase the angle overtime to make it spin
+			//use cos and sin to get the X and Y position of the circle the cat will spin around
 			Vector3 moveDireciton = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * spinRadius.value;
 
-
+			//set the location as the destination
 			navAgent.value.SetDestination(agent.transform.position + moveDireciton);
         }
 	}
